@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}My Blog{% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>My Blog</h4>
+        </div>
+        {% for post in posts %}
+            <div class="panel-body">
+                <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+                <p>Published {{ post.publish }} by {{ post.author }}</p>
+                {{ post.body|truncatewords:30|linebreaks }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
